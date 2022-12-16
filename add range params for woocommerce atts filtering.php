@@ -1,6 +1,6 @@
 <?php
 
-function get_tax_prod($query)
+function add_range_params_for_woocommerce_atts_filtering($query)
 {
 	global $wpdb;
 
@@ -31,4 +31,4 @@ function get_tax_prod($query)
 	}
 }
 
-add_filter('pre_get_posts', 'get_tax_prod');
+add_filter('pre_get_posts', 'add_range_params_for_woocommerce_atts_filtering');
