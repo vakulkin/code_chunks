@@ -1,0 +1,9 @@
+function hide_product_cat_taxonomy_page($array ) {
+//     echo '<pre>';
+// var_dump($array) ; echo '</pre>';
+    $array['public'] = false;
+    $array['show_ui'] = true;
+return $array;
+}
+// hook it up to 11 so that it overrides the original register_taxonomy function
+add_filter( 'woocommerce_taxonomy_args_product_cat', 'hide_product_cat_taxonomy_page' );
