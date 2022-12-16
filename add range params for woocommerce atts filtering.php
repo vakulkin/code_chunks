@@ -6,15 +6,15 @@ function add_range_params_for_woocommerce_atts_filtering($query)
 
 	$att_name = 'pa_sq-m';
 
-	if (isset($_GET["[$att_name}_min"]) && isset($_GET["[$att_name}_max"]) && is_numeric($_GET["[$att_name}_min"]) && is_numeric($_GET["[$att_name}_max"])) {
+	if (isset($_GET["{$att_name}_min"]) && isset($_GET["{$att_name}_max"]) && is_numeric($_GET["{$att_name}_min"]) && is_numeric($_GET["{$att_name}_max"])) {
 		$terms_sqm = $wpdb->get_col(
 			$wpdb->prepare(
 				"SELECT t.slug FROM {$wpdb->prefix}term_taxonomy tt
 				JOIN {$wpdb->prefix}terms t ON tt.term_id = t.term_id
 				WHERE tt.taxonomy LIKE 'pa_sq-m'
 				AND t.slug * 1 BETWEEN %d AND %d",
-				$_GET["[$att_name}_min"],
-				$_GET["[$att_name}_max"]
+				$_GET["{$att_name}_min"],
+				$_GET["{$att_name}_max"]
 			),
 		);
 
